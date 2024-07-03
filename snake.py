@@ -58,8 +58,17 @@ def change_direction(e):
         velocityX = 1
         velocityY = 0
 
+def move_snake():
+    global snake
+    
+    snake.x += velocityX * TILE_SIZE
+    snake.y += velocityY * TILE_SIZE
+    
+    
+
 def draw():
     global snake
+    move_snake()
     
     #draw snake
     canvas.create_rectangle(snake.x, snake.y, snake.x + TILE_SIZE, snake.y + TILE_SIZE, fill="lime green")
