@@ -39,6 +39,24 @@ window.geometry(f"{window_width}x{window_height}+{window_x}+{window_y}")
 #initialize game
 snake = Tile(5 * TILE_SIZE, 5 * TILE_SIZE)
 food = Tile(10 * TILE_SIZE, 10 * TILE_SIZE)
+velocityX = 0
+velocityY = 0
+
+def change_direction(e):
+    
+    global velocityX, velocityY
+    if (e.keysym == "Up"):
+        velocityX = 0
+        velocityY = -1
+    elif (e.keysym == "Down"):
+        velocityX = 0
+        velocityY = 1
+    elif (e.keysym == "Left"):
+        velocityX = -1
+        velocityY = 0
+    elif (e.keysym == "Right"):
+        velocityX = 1
+        velocityY = 0
 
 def draw():
     global snake
@@ -53,4 +71,5 @@ def draw():
     
 draw()
 
+window.bind("<KeyRelease>", change_direction)
 window.mainloop()
